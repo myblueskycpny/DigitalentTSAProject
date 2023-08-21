@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class CrosshairController : MonoBehaviour
 {
@@ -23,6 +24,7 @@ public class CrosshairController : MonoBehaviour
             if (hit.collider != null && hit.collider.tag == "Enemy")
             {
                 Destroy(hit.collider.gameObject);
+                ScoreText.score += 10;
             }
         }
     }
