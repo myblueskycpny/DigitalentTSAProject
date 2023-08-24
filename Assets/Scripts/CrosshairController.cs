@@ -16,6 +16,7 @@ public class CrosshairController : MonoBehaviour
         transform.position = cursorPos;
         if (Input.GetMouseButtonDown(0))
         {
+            Cursor.visible = false;
             // Membuat ray dari kamera ke arah crosshair
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
