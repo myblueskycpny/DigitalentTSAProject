@@ -5,6 +5,7 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class CrosshairController : MonoBehaviour
 {
+    public AudioSource gunsound;
     private void Awake()
     {
         Cursor.visible = false;
@@ -20,10 +21,12 @@ public class CrosshairController : MonoBehaviour
             // Membuat ray dari kamera ke arah crosshair
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+            gunsound.Play();
 
             // Jika ray mengenai objek dengan tag "Enemy", hancurkan objek tersebut
             if (hit.collider != null && hit.collider.tag == "Enemy")
             {
+                
                 Destroy(hit.collider.gameObject);
                 ScoreText.score += 10;
             }
