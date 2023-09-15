@@ -8,6 +8,7 @@ public class ControllerMusic : MonoBehaviour
     public GameObject unMuteButt;
     void Start()
     {
+        Cursor.visible = true;
         if(MusicController.instance.music.mute == false)
         {
             MuteButt.SetActive(true);

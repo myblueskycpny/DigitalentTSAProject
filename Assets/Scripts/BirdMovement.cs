@@ -9,7 +9,18 @@ public class BirdMovement : MonoBehaviour
 
     private void Start()
     {
-        moveSpeed = Random.Range(5f, 10f);
+        int score = ScoreText.score;
+        if(score <= 50)
+        {
+            moveSpeed = Random.Range(5f, 10f);
+        } else if(score > 50 && score < 150)
+        {
+            moveSpeed = Random.Range(11f, 15f);
+        }
+        else
+        {
+            moveSpeed = Random.Range(16f, 20f);
+        }
         mainCamera = Camera.main;
     }
     void Update()

@@ -20,13 +20,29 @@ public class spawner : MonoBehaviour
 
     void Update()
     {
-        // Jika waktu saat ini melebihi waktu spawn berikutnya, maka spawn objek dan hitung ulang waktu spawn berikutnya
+        // Memeriksa poin pemain
         if (Time.time >= nextSpawnTime)
         {
             SpawnObject();
+
+            // Memperbarui tingkat spawn berdasarkan poin pemain
+            if (ScoreText.score >= 20)
+            {
+                // Jika pemain telah mencapai 10 poin, tingkat spawn akan semakin cepat
+                minSpawnRate = 0.5f;
+                maxSpawnRate = 2.0f;
+            }
+            else if (ScoreText.score >= 100)
+            {
+                // Jika pemain telah mencapai 20 poin, tingkat spawn akan semakin cepat lagi
+                minSpawnRate = 0.2f;
+                maxSpawnRate = 1.0f;
+            }
+
             CalculateNextSpawnTime();
         }
     }
+
 
     void CalculateNextSpawnTime()
     {
